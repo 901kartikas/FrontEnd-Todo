@@ -3,7 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/header";
 import AuthPage from './pages/authPage';
 import FormPage from "./pages/formPage";
-import ListPage from './pages/actionPage';
+import AddTodo from './pages/addTodo';
+import EditTodo from './pages/editTodo';
 import {connect} from 'react-redux'
 import Spinner from "./components/spinner/spinner";
 import { ToastContainer, Slide } from "react-toastify";
@@ -28,8 +29,8 @@ const App = ({user, dispatchLogoutAction}) => {
         ) : (
           <Switch>
             <Route exact path="/form" component={FormPage} />
-            <Route exact path="/form/:id" component={FormPage} />
-            <Route exact path="/edit" component={ListPage} />
+            <Route exact path="/edit/:id" component={EditTodo} />
+            <Route exact path="/add" component={AddTodo} />
             <Redirect to="/form" />
           </Switch>
         )}    

@@ -1,6 +1,5 @@
 import * as constants from '../constant';
 
-
 const defaultState = {
     token: null,
     isLoggedIn: false,

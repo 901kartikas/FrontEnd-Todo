@@ -15,15 +15,15 @@ const FormPage = ({loading, todoCategory, dispatchFetchAllTodoAction}) => {
                     <h2> To Do List </h2>
                 </div >
                 <div className="col-2">
-                    <Link to="/edit" className="btn btn-primary">
+                    <Link to="/add" className="btn btn-primary">
                         Create
                     </Link>
                 </div>
             </div>
             <div className="row mt-5">
                 <div className="col-12">
-                    {
-                        todoCategory > 0 ? <ShowList todoCategory={todoCategory}/> :
+                {
+                        todoCategory.length > 0 ? <ShowList todoCategory={todoCategory}/> :
                         <div className="text-center mt-5">
                             <h2 className="text-center"> kamu gak punya to Do Thing apa apa </h2>
                         </div>

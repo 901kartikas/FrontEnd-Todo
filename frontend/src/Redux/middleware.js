@@ -29,8 +29,8 @@ export const apiMiddleware = ({dispatch, getState}) => next => action => {
         else{
             if (err.response && err.response.status === 403)
                 dispatch(logOutUser());
-            if (err.response.data.error.message){
-                if(postProcessError) postProcessError(err.response.data.error.message);
+            if (err.response.data.message){
+                if(postProcessError) postProcessError(err.response.data.message);
             }
         }
     })

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { connect } from "react-redux";
 import {toast} from 'react-toastify';
 import { loginUser } from "../Redux/actions/authAction";
-import {  useToasts} from "react-toast-notifications";
+
 
 
 
@@ -11,14 +11,32 @@ const LoginComponent = ({dispatchLoginAction}) => {
   
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('') 
+  const [error, setError] = useState({username: false, password: false});
 
   const handleSubmit = (event) => {
     console.log(username, password)
     event.preventDefault();
-    dispatchLoginAction(username, password, 
-      () => toast.success("udah login thx"),
-      (message) => toast.error(`Error: ${message}`));
+    if(isFormInvalid()) updateError();
+    else dispatchLoginAction(username, password, 
+        () => toast.success("udah login thx"),
+        (message) => toast.error(`Error: ${message}`));
   };
+
+  const isFormInvalid = () => (!username || !password);
+
+  const updateError = () => {
+    const errObj = {username: false, password:false};
+    if(!username.trim()) errObj.username = true;
+    if(!password.trim()) errObj.password = true;
+    setError(errObj);
+  };
+
+  const handleCancle = event => {
+      event.preventDefault();
+      setUsername('');
+      setPassword('');
+      setError({username: false, password:false});
+  } 
 
     return (
       <div>
@@ -31,12 +49,13 @@ const LoginComponent = ({dispatchLoginAction}) => {
             <div className="col-sm-10">
               <input
                 type="text"
-                className="form-control"
                 id="username"
                 name="username"
                 value={username}
                 onChange = {(e) => setUsername(e.target.value)}
+                className={`form-control ${error.username ? 'is-invalid':''}` }
               />
+              <p className="invalid-feedback"> Ini tolong diisi </p>
             </div>
           </div>
           <div className="mb-3 row">
@@ -44,17 +63,22 @@ const LoginComponent = ({dispatchLoginAction}) => {
               Password
             </label>
             <div className="col-sm-10">
-              <input type="password" 
-              className="form-control" 
+              <input type="password"
               id="password" 
               name="password"
               value={password}
-              onChange = {(e) => setPassword(e.target.value)}/>
+              onChange = {(e) => setPassword(e.target.value)}
+              className={`form-control ${error.password ? 'is-invalid':''}` }
+              />
+              <p className="invalid-feedback"> Ini tolong diisi </p>
             </div>
            
           </div>
-          <button type="submit">
+          <button type="submit" className="btn btn-primary mr-2">
               Login
+          </button>
+          <button type="button" className="btn btn-outline-secondary">
+              cancel
           </button>
           </form>
         </React.Fragment>
