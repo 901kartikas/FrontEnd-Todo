@@ -11,7 +11,7 @@ const Header = ({isLoggedIn, onLogOut}) => {
           </Link>
           { isLoggedIn &&
             <h4>
-              <span className="badge badge-pill badge-secondary text-capitalize"> Hai  </span>
+              <span className="badge badge-pill badge-secondary text-capitalize"> Hello  </span>
             </h4>
           }
           { isLoggedIn &&

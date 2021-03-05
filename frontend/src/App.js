@@ -5,11 +5,12 @@ import AuthPage from './pages/authPage';
 import FormPage from "./pages/formPage";
 import AddTodo from './pages/addTodo';
 import EditTodo from './pages/editTodo';
+import SubList from './pages/sublist';
+import {logOutUser} from './Redux/actions/authAction'
 import {connect} from 'react-redux'
 import Spinner from "./components/spinner/spinner";
 import { ToastContainer, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.min.css' 
-import {logOutUser} from './Redux/actions/authAction'
 
 
 const App = ({user, dispatchLogoutAction}) => {
@@ -31,6 +32,7 @@ const App = ({user, dispatchLogoutAction}) => {
             <Route exact path="/form" component={FormPage} />
             <Route exact path="/edit/:id" component={EditTodo} />
             <Route exact path="/add" component={AddTodo} />
+            <Route exact path="/detail/:todoCategoryID" component={SubList} />
             <Redirect to="/form" />
           </Switch>
         )}    

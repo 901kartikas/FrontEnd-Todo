@@ -9,7 +9,6 @@ export const fetchAllTodo = () => ({
     }
 })
 
-
 export const CreateTodo = (data, onSuccess, onError) => ({
     type: constants.API,
     payload: {
@@ -46,7 +45,7 @@ export const updateCategoryId = (id, data, onSuccess, onError) => ({
 export const deleteCategoryById = (id, onSuccess, onError) => ({
     type: constants.API,
     payload: {
-    method:    'DELETE',
+    method: 'DELETE',
     url : `/api/TodoCategory/${id}`,
     success: () => (deleteTodoCategory(id)),
     postProcessSuccess: onSuccess,
@@ -58,7 +57,6 @@ const addTodo = (todo) => ({
     type : constants.CREATE_TODO,
     payload : todo
 })
-
 
 const setAllTodo = (data) => ({
     type : constants.FETCH_ALL_TODO,

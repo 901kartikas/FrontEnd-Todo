@@ -17,6 +17,8 @@ const ListPage = ({ dispatchCreateTodoAction, history }) => {
         }, (message) => toast.error(`Error: ${message}`));
   }
 
+  
+
   return (
     <React.Fragment>
     <div className="container-sm">
@@ -63,6 +65,7 @@ const ListPage = ({ dispatchCreateTodoAction, history }) => {
 const mapDispatchToProps = (dispatch) => ({
   dispatchCreateTodoAction: (data, onSuccess, onError) =>
     dispatch(CreateTodo(data, onSuccess, onError)),
+    
 });
 
 export default connect(null, mapDispatchToProps)(ListPage);

@@ -7,7 +7,8 @@ import {toast} from 'react-toastify'
 const EditTodo = ({ dispatchGetTodoIdAction, match, dispatchUpdateTodoAction,history }) => {
   
   const [categoryTitle, setCategoryTitle] = useState("");
-  
+
+
   useEffect(()=> {
     const {id} = match.params;
     if(id){
@@ -20,14 +21,16 @@ const EditTodo = ({ dispatchGetTodoIdAction, match, dispatchUpdateTodoAction,his
 
 
   const handleOnSubmit = event => {
-      const {id} = match.params;
-      event.preventDefault();
-      const data = {categoryTitle};
-      dispatchUpdateTodoAction(id, data, () => {
-        toast.success('sudah diupdate');
-        history.replace('/form');
-      });
-  }
+    const {id} = match.params;
+    event.preventDefault();
+    const data = {categoryTitle};
+    dispatchUpdateTodoAction(id, data, () => {
+         toast.success('sudah diupdate');
+         history.replace('/form');
+    }, (message) => toast.error(`Error : ${message}`));
+}
+
+
 
   return (
     <React.Fragment>
@@ -74,6 +77,7 @@ const EditTodo = ({ dispatchGetTodoIdAction, match, dispatchUpdateTodoAction,his
 const mapDispatchToProps = (dispatch) => ({
   dispatchUpdateTodoAction: (id, data, onSuccess, onError) => 
     dispatch(updateCategoryId(id, data, onSuccess, onError)),
+    
   dispatchGetTodoIdAction: (id, onSuccess) => 
     dispatch(getCategoryId(id, onSuccess))
 });

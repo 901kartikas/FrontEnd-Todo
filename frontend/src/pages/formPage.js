@@ -16,7 +16,7 @@ const FormPage = ({loading, todoCategory, dispatchFetchAllTodoAction}) => {
                 </div >
                 <div className="col-2">
                     <Link to="/add" className="btn btn-primary">
-                        Create
+                        Create +
                     </Link>
                 </div>
             </div>
@@ -27,12 +27,10 @@ const FormPage = ({loading, todoCategory, dispatchFetchAllTodoAction}) => {
                         <div className="text-center mt-5">
                             <h2 className="text-center"> kamu gak punya to Do Thing apa apa </h2>
                         </div>
-                    }
-                </div>
-            </div>
+                }
 
-
-            
+                </div>           
+             </div>
         </React.Fragment>
     );
 }

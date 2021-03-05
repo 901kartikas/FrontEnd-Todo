@@ -8,10 +8,10 @@ export default function todolistReducers(state = [], action) {
         case constants.CREATE_TODO:
             return state.concat(action.payload);
         case constants.DELETE_TODO: 
-            return state.filter(item => item._id !== action.payload);
+            return state.filter(item => item.id !== action.payload);
         case constants.UPDATE_TODO: 
             return state.map(item => {
-                if (item._id === action.payload.todoCategoryId)
+                if (item.id === action.payload.id)
                     return { ...item, ...action.payload.data};
                 else 
                     return item;

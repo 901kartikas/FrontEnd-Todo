@@ -19,7 +19,7 @@ const LoginComponent = ({dispatchLoginAction}) => {
     if(isFormInvalid()) updateError();
     else dispatchLoginAction(username, password, 
         () => toast.success("udah login thx"),
-        (message) => toast.error(`Error: ${message}`));
+        (message) => toast.error(`Error:${message}`));
   };
 
   const isFormInvalid = () => (!username || !password);
@@ -31,7 +31,7 @@ const LoginComponent = ({dispatchLoginAction}) => {
     setError(errObj);
   };
 
-  const handleCancle = event => {
+  const handleCancel = event => {
       event.preventDefault();
       setUsername('');
       setPassword('');
@@ -77,7 +77,7 @@ const LoginComponent = ({dispatchLoginAction}) => {
           <button type="submit" className="btn btn-primary mr-2">
               Login
           </button>
-          <button type="button" className="btn btn-outline-secondary">
+          <button type="button" className="btn btn-outline-secondary" onClick={handleCancel}>
               cancel
           </button>
           </form>
