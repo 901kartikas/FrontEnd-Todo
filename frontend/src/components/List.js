@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteCategoryById } from "../Redux/actions/todolistAction";
+import { getCategoryId, deleteCategoryById } from "../Redux/actions/todolistAction";
 import { toast } from "react-toastify";
 
 
-const List = ({ todoCategory, dispatchDeleteAction }) => {
+const List = ({ todoCategory, dispatchDeleteAction}) => {
   const [selectTodoCategory, setSelectTodoCategory] = useState("");
 
   const showModal = (event, id) => {
@@ -51,9 +51,9 @@ const List = ({ todoCategory, dispatchDeleteAction }) => {
                   </a>
                 </td>
                 <td>
-                <Link to={`/detail/${item.id}`}>
-                      <button className="btn btn-warning">detail</button>
-                    </Link>
+                  <Link to={`/detail/${item.id}`}>
+                    <button className="btn btn-warning">detail</button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -66,8 +66,8 @@ const List = ({ todoCategory, dispatchDeleteAction }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchDeleteAction: (id, onSucces, onError) =>
-    dispatch(deleteCategoryById(id, onSucces, onError)),
+  dispatchDeleteAction: (id, onSucces, onError) => dispatch(deleteCategoryById(id, onSucces, onError)),
+  dispatchEditAction : (id, onSucces, onError) => dispatch(getCategoryId(id,onSucces, onError)),
 });
 
 export default connect(null, mapDispatchToProps)(List);

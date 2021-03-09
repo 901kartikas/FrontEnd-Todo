@@ -1,7 +1,6 @@
 import * as constants from '../constant'
 
 
-
 export const registerUser = (data, onSuccess, onError) => ({
     type: constants.API,
     payload: {

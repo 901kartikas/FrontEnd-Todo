@@ -10,6 +10,7 @@ const EditTodo = ({ dispatchGetTodoIdAction, match, dispatchUpdateTodoAction,his
 
 
   useEffect(()=> {
+    console.log(match);
     const {id} = match.params;
     if(id){
       dispatchGetTodoIdAction(id, ({categoryTitle}) =>
@@ -29,8 +30,6 @@ const EditTodo = ({ dispatchGetTodoIdAction, match, dispatchUpdateTodoAction,his
          history.replace('/form');
     }, (message) => toast.error(`Error : ${message}`));
 }
-
-
 
   return (
     <React.Fragment>

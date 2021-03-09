@@ -7,7 +7,7 @@ const Header = ({isLoggedIn, onLogOut}) => {
       <div>
         <nav className="navbar navbar-dark bg-dark">
           <Link className="navbar-brand" to="/"> 
-            <i className="fas fa-th-list fa-2x"></i>
+            <i className="fas fa-th-list "></i>
           </Link>
           { isLoggedIn &&
             <h4>

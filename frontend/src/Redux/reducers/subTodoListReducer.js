@@ -2,7 +2,9 @@ import * as constants from '../constant'
 
 
 export default function subTodoListReducers(state =[], action)
+
 {
+    // console.log('action', action, state)
     switch (action.type) {
         case constants.FETCH_ALL_SUB_TODO:
             return action.payload;
@@ -12,7 +14,7 @@ export default function subTodoListReducers(state =[], action)
             return state.filter(item => item.id !== action.payload);
         case constants.UPDATE_SUB_TODO:
             return state.map(item => {
-                if (item.id === action.payload.todoCategoryID)
+                if (item._id === action.payload.id)
                     return { ...item, ...action.payload.data};
                 else 
                     return item;

@@ -2,6 +2,7 @@ import * as constants from '../constant'
 
 
 export default function todolistReducers(state = [], action) {
+    // console.log('action',action,state)
     switch(action.type) {
         case constants.FETCH_ALL_TODO: 
             return action.payload;

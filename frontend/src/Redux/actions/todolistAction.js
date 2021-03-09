@@ -45,11 +45,11 @@ export const updateCategoryId = (id, data, onSuccess, onError) => ({
 export const deleteCategoryById = (id, onSuccess, onError) => ({
     type: constants.API,
     payload: {
-    method: 'DELETE',
-    url : `/api/TodoCategory/${id}`,
-    success: () => (deleteTodoCategory(id)),
-    postProcessSuccess: onSuccess,
-    postProcessError: onError
+        method: 'DELETE',
+        url : `/api/TodoCategory/${id}`,
+        success: () => (deleteTodoCategory(id)),
+        postProcessSuccess: onSuccess,
+        postProcessError: onError
     }
 })
 
